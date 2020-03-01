@@ -1,0 +1,23 @@
+{
+  "name": "backendis2",
+  "version": "1.0.0",
+  "description": "Configurar entorno de desarrollo.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Angatupyry/backendis2.git"
+  },
+  "author": "Grupo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Angatupyry/backendis2/issues"
+  },
+  "homepage": "https://github.com/Angatupyry/backendis2#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
