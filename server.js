@@ -1,6 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const router = require('././networks/routes')
+
 const app = express()
-const router = express.Router()
+
+app.use(bodyParser.json())
+router(app)
 
 app.get('/', function (req, res, next) {
     res.send('')
