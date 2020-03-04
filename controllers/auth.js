@@ -1,4 +1,3 @@
-const user = require('../user/controller')
 const jwt = require('jwt-simple')
 module.exports = {
     algo: function (req, res) {
@@ -6,7 +5,7 @@ module.exports = {
 
         const payload = {
             id: 1,
-            nombre: req.body.user
+            nombre: 'cesar'
         }
 
         const token = jwt.encode(payload, '!laclave!', 'HS512')
@@ -16,9 +15,6 @@ module.exports = {
             token: token,
             message: 'Prueba'
         })
-
-
-
     }
 
 }

@@ -1,9 +1,7 @@
-const express = require('express')
-const user = require('../components/user/network')
-const auth = require('../components/auth/controller')
+const app = require('express').Router()
+const auth = require('../controllers/auth')
 
-const routes = function (server) {
-    server.use('/login', user)
-}
 
-module.exports = routes
+app.post('/login', auth.algo)
+
+module.exports = app
