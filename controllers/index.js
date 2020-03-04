@@ -1,6 +1,5 @@
 const express = require('express')
 const response = require('../../networks/response')
-const prueba = require('../auth/controller')
 
 const router = express.Router()
 

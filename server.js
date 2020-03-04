@@ -6,7 +6,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//Direccion del API
 app.use('/', router)
 
 app.listen(config.api.port, () => {
