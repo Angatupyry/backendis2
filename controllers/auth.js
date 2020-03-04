@@ -5,7 +5,7 @@ module.exports = {
 
         const payload = {
             id: 1,
-            nombre: 'cesar'
+            nombre: req.body.user
         }
 
         const token = jwt.encode(payload, '!laclave!', 'HS512')
@@ -13,7 +13,7 @@ module.exports = {
         res.status(201).json({
             success: true,
             token: token,
-            message: 'Prueba'
+            message: 'Login exitoso'
         })
     }
 
