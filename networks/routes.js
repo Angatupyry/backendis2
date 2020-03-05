@@ -5,7 +5,7 @@ const {
 } = require('../middelwares')
 
 app.post('/login', auth.login)
-app.use(mwToken)
+//app.use(mwToken)
 
 
 module.exports = app
