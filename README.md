@@ -11,7 +11,7 @@
 2. Iniciar la APP
 
     ```
-    npm run dev
+    npm star server.js
     ```
 3. Crear el archivo config.js
 
