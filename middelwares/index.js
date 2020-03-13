@@ -1,5 +1,5 @@
 const jwt = require('jwt-simple')
-const config = require('../config')
+const config = require('../config/config')
 const response = require('../networks/response')
 
 function mwToken(req, res, next) {

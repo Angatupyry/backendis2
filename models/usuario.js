@@ -1,22 +1,20 @@
-const Sequelize = require('sequelize')
-const setupDataBase = require('../services/bd')
-
-
-module.exports = function setupUsuarioModel(config) {
-    const sequelize = setupDataBase(config)
-
+module.exports = function (sequelize, DataTypes) {
     return sequelize.define('usuario', {
-        id: {
-            type: Sequelize.INTEGER,
+        id_usuario: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         username: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         pass: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         }
-    })
+    }, {
+        tableName: 'is_usuario',
+        timestamps: false,
+        schema: 'public'
+    });
 }

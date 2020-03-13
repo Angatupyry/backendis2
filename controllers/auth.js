@@ -1,7 +1,7 @@
 const jwt = require('jwt-simple')
 const moment = require('moment')
 const response = require('../networks/response')
-const config = require('../config')
+const config = require('../config/config')
 module.exports = {
     login: function (req, res) {
         try {
