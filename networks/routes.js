@@ -3,7 +3,7 @@ const auth = require('../controllers/auth')
 const crudCommon = require('../networks/crud_common')
 const {
     usuario
-} = require('../models/usuario')
+} = require('../models')
 
 const {
     mwToken

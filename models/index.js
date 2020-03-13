@@ -4,8 +4,11 @@ var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 const asdf = require('../config/bd.json')
 var env = process.env.NODE_ENV || "development";
-var config = require(__dirname + asdf)[env];
+console.log(env)
+console.log(__dirname)
 
+var config = require('../config/bd.json')[env];
+console.log(config)
 var db = {};
 
 if (config.use_env_variable) {
