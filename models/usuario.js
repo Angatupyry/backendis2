@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
         username: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: 'usuario_username_key'
+            unique: 'user_name_unique'
         },
         nombre: {
             type: DataTypes.STRING,
