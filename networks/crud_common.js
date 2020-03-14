@@ -6,7 +6,7 @@ module.exports = function (modelo) {
   router.get('/', (req, res, next) => {
     modelo.findAll({
         order: [
-          ['id_usuario', 'ASC']
+          ['id', 'ASC']
         ]
       })
       .then(modelo => {
