@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             unique: 'user_name_unique'
         },
         nombre: {
@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             defaultValue: false
         },
-        proyecto_ud: {
+        proyecto_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -53,7 +53,6 @@ module.exports = function (sequelize, DataTypes) {
                 key: 'id'
             }
         }
-
     }, {
         tableName: 'usuario',
         timestamps: false,
