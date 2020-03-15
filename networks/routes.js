@@ -1,5 +1,5 @@
 const app = require('express').Router()
-const auth = require('../controllers/auth')
+const auth = require('../controllers/Auth')
 const crudCommon = require('../networks/crud_common')
 const {
     usuario
