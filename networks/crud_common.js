@@ -1,8 +1,10 @@
+/*
+  Utiización de verbos para cualquier modelo
+*/ 
 module.exports = function (modelo) {
 
   const router = require('express').Router()
 
-  // Rutas 
   router.get('/', (req, res, next) => {
     modelo.findAll({
         order: [
