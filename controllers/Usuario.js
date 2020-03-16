@@ -46,7 +46,10 @@ module.exports = {
                 activo: true
             }
         ]
-        return json.Parse(userTemp)
+        console.log(userTemp)
+        res.status(200).json({
+            userTemp
+        })
     }
 
 }

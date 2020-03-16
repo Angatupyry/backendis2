@@ -14,13 +14,15 @@ module.exports = {
                     id: 1,
                     username: 'crolon',
                     password: '123',
-                    activo: true
+                    activo: true,
+                    rol: 'admin'
                 },
                 {
                     id: 2,
                     username: 'aestigarribia',
                     password: '456',
-                    activo: true
+                    activo: true,
+                    rol: 'desarrollador'
                 }
             ]
             let noExiste = 0
@@ -70,6 +72,7 @@ module.exports = {
                 res.status(201).json({
                     success: true,
                     token: token,
+                    user_rol: user.rol,
                     message: 'Login'
                 })
             }
