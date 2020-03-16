@@ -1,4 +1,6 @@
 # Backend del proyecto IS2
+## DOCUMENTACIÓN Y EXPLICACIÓN DE ENTREGA SEGÚN RÚBRICA DEL PROYECTO
+(DOCUMENTACIÓN DE ACTIVIDADES)[https://github.com/Angatupyry/s2]
 ## Inicializar
 
 1. Instalar dependencias
