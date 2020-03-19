@@ -9,12 +9,25 @@ console.log(__dirname)
 
 var config = require('../config/bd.json')[env];
 console.log(config)
+console.log(config.database)
+
 var db = {};
 
 // if (config.use_env_variable) {
 //     var sequelize = new Sequelize(process.env[config.use_env_variable]);
 // } else {
-    var sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+const sequelize = new Sequelize('drcj8chfol8b', 'itdjvarewhxkyk', '789f78a217e2593cabeb2a9d32d134f17bb6bea041c59be81eb853dcdeb993ee', {
+    host: 'ec2-23-23-245-89.compute-1.amazonaws.com',
+    dialect: 'postgres',
+    pool: {
+        max: 9,
+        min: 0,
+        idle: 10000
+    }
+})
+//var sequelize = new Sequelize(config.database, config.username, config.password, config);
+console.log(sequelize)
 //}
 
 fs
