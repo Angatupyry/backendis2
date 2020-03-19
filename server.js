@@ -23,7 +23,11 @@ function xPoweredBy(req, res, next) {
   next()
 }
 
-app.use('/', router)
+//app.use('/', router)
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 
 app.use(errorHandler)
 
