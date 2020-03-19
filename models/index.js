@@ -8,8 +8,8 @@ console.log(env)
 console.log(__dirname)
 
 var config = require('../config/bd.json')[env];
-console.log(config)
-console.log(config.database)
+// console.log(config)
+// console.log(config.database)
 
 var db = {};
 
