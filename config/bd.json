@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "admin",
-        "password": "admin",
-        "database": "gestion_proyecto",
-        "host": "localhost",
+        "username": "itdjvarewhxkyk",
+        "password": "789f78a217e2593cabeb2a9d32d134f17bb6bea041c59be81eb853dcdeb993ee",
+        "database": "drcj8chfol8b",
+        "host": "ec2-23-23-245-89.compute-1.amazonaws.com",
         "port": 5432,
         "dialect": "postgres"
     }
