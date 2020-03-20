@@ -3,10 +3,11 @@ const bodyParser = require('body-parser')
 const router = require('././networks/routes')
 const config = require('./config/config')
 const app = express()
+const cors = require('cors')
 const {
   errorHandler
 } = require('./middelwares')
-const cors = require('cors')
+
 app.use(bodyParser.urlencoded({
   extended: false
 }))
@@ -25,9 +26,21 @@ function xPoweredBy(req, res, next) {
 
 app.use('/', router)
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-// });
+// Resto de rutas
+app.use('*', (req, res, next) => {
+  var d = new Date()
+  res.status(404).json({
+    success: false,
+    timestamp: d,
+    ip: req.ip,
+    ips: req.ips,
+    method: req.method,
+    originalUrl: req.originalUrl,
+    message: '404 - Not Found',
+    author: `Gestión de Proyectos ${d.getFullYear()}`
+  })
+  next()
+})
 
 app.use(errorHandler)
 
