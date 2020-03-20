@@ -35,11 +35,11 @@ module.exports = function (sequelize, DataTypes) {
         activo: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
-            defaultValue: false
+            defaultValue: true
         },
         proyecto_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'proyecto',
                 key: 'id'
