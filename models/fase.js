@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        fecha_incio: {
+        fecha_inicio: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: sequelize.fn('now')

@@ -9,7 +9,8 @@ const {
     usuario,
     rol,
     permiso,
-    prioridad_item
+    prioridad_item,
+    fase
 } = require('../models')
 
 const {
@@ -54,6 +55,6 @@ app.get('/listProjects', controlProject.list)
 app.get('/listEstados/:table_name', controlGeneric.listEstados)
 app.use('/listPermisos', crudCommon(permiso))
 app.use('/listPrioridad', crudCommon(prioridad_item))
-
+app.use('/listFases', crudCommon(fase))
 
 module.exports = app
