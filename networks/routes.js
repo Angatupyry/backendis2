@@ -3,6 +3,7 @@ const auth = require('../controllers/Auth')
 const crudCommon = require('../networks/crud_common')
 const controlUsuario = require('../controllers/Usuario')
 const controlItem = require('../controllers/Item')
+const controlProject = require('../controllers/Project')
 const {
     usuario,
     rol
@@ -36,5 +37,11 @@ app.use('/listRoles', crudCommon(rol))
 //#####################################################
 
 app.get('/listItems', controlItem.list)
+
+//#####################################################
+//##################    PROYECTO      #####################
+//#####################################################
+
+app.get('/listProjects', controlProject.list)
 
 module.exports = app
