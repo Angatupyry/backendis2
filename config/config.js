@@ -8,6 +8,6 @@ module.exports = {
             credentials: true,
             maxAge: 3600,
             preflightContinue: false,
-          }
+        }
     }
-    }
+}
