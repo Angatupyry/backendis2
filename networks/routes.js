@@ -8,7 +8,8 @@ const controlGeneric = require('../controllers/GenericList')
 const {
     usuario,
     rol,
-    permiso
+    permiso,
+    prioridad_item
 } = require('../models')
 
 const {
@@ -52,6 +53,7 @@ app.get('/listProjects', controlProject.list)
 
 app.get('/listEstados/:table_name', controlGeneric.listEstados)
 app.use('/listPermisos', crudCommon(permiso))
+app.use('/listPrioridad', crudCommon(prioridad_item))
 
 
 module.exports = app
