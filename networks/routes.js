@@ -7,7 +7,8 @@ const controlProject = require('../controllers/Project')
 const controlGeneric = require('../controllers/GenericList')
 const {
     usuario,
-    rol
+    rol,
+    permiso
 } = require('../models')
 
 const {
@@ -20,7 +21,7 @@ app.post('/login', auth.login)
 
 //#####################################################
 //################     USUARIO      ###################
-//####################################################
+//#####################################################
 
 app.use('/createUser', crudCommon(usuario))
 app.get('/listUsers', controlUsuario.list)
@@ -49,8 +50,8 @@ app.get('/listProjects', controlProject.list)
 //##################    Genéricos      ################
 //#####################################################
 
-app.get('/listEstados:tabla_name', controlGeneric.listroles )
-
+app.get('/listEstados/:table_name', controlGeneric.listEstados)
+app.use('/listPermisos', crudCommon(permiso))
 
 
 module.exports = app
