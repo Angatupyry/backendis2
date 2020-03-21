@@ -2,6 +2,7 @@ const app = require('express').Router()
 const auth = require('../controllers/Auth')
 const crudCommon = require('../networks/crud_common')
 const controlUsuario = require('../controllers/Usuario')
+const controlItem = require('../controllers/Item')
 const {
     usuario,
     rol
@@ -28,8 +29,12 @@ app.get('/listUsers', controlUsuario.list)
 //#####################################################
 
 app.use('/createRol', crudCommon(rol))
-app.use('/roles', crudCommon(rol))
+app.use('/listRoles', crudCommon(rol))
 
+//#####################################################
+//##################    ITEM      #####################
+//#####################################################
 
+app.get('/listItems', controlItem.list)
 
 module.exports = app
