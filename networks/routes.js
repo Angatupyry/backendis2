@@ -27,7 +27,8 @@ app.post('/login', auth.login)
 
 app.use('/createUser', crudCommon(usuario))
 app.get('/listUsers', controlUsuario.list)
-
+app.use('/deleteUser', crudCommon(usuario))
+app.use('/updateUser', crudCommon(usuario))
 
 //#####################################################
 //##################     ROL      #####################
@@ -35,6 +36,8 @@ app.get('/listUsers', controlUsuario.list)
 
 app.use('/createRol', crudCommon(rol))
 app.use('/listRoles', crudCommon(rol))
+app.use('/deleteRol', crudCommon(rol))
+app.use('/updateRol', crudCommon(rol))
 
 //#####################################################
 //##################    ITEM      #####################

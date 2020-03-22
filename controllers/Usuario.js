@@ -39,7 +39,8 @@ module.exports = {
 
         try {
             const user = await usuario.sequelize.query(`
-                                select u.username, u.nombre, u.apellido,
+                                select u.id, 
+                                        u.username, u.nombre, u.apellido,
                                         u.email, r.descripcion, u.activo 
                                 from usuario u
                                 join rol r on r.id = u.rol_id`, {
