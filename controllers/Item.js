@@ -9,8 +9,8 @@ module.exports = {
                                     select i.id item_id, 
                                     p.descripcion nombre_prioridad,
                                     e.descripcion estado, 
-                                    i.descripcion nombre_item, 
                                     i.observacion, 
+                                    i.descripcion,
                                     f.nombre fase_nombre
                             from item i
                             join prioridad_item p on p.id = i.prioridad_id
