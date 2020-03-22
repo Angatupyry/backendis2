@@ -10,7 +10,9 @@ const {
     rol,
     permiso,
     prioridad_item,
-    fase
+    fase,
+    proyecto,
+    item
 } = require('../models')
 
 const {
@@ -44,12 +46,18 @@ app.use('/updateRol', crudCommon(rol))
 //#####################################################
 
 app.get('/listItems', controlItem.list)
+app.use('/createItem', crudCommon(item))
+app.use('/deleteItem', crudCommon(item))
+app.use('/updateItem', crudCommon(item))
 
 //#####################################################
 //##################    PROYECTO      #################
 //#####################################################
 
 app.get('/listProjects', controlProject.list)
+app.use('/createProject', crudCommon(proyecto))
+app.use('/deleteProject', crudCommon(proyecto))
+app.use('/updateProject', crudCommon(proyecto))
 
 //#####################################################
 //##################    Genéricos      ################

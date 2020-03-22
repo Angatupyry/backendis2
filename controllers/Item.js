@@ -6,7 +6,7 @@ module.exports = {
 
         try {
             const i = await item.sequelize.query(`
-                                    select i.id item_id, 
+                                    select i.id , 
                                     p.descripcion nombre_prioridad,
                                     e.descripcion estado, 
                                     i.observacion, 

@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         version: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         prioridad_id: {
             type: DataTypes.INTEGER,
