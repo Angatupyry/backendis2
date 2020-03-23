@@ -66,6 +66,7 @@ app.use('/updateProject', crudCommon(proyecto))
 app.get('/listEstados/:table_name', controlGeneric.listEstados)
 app.use('/listPermisos', crudCommon(permiso))
 app.use('/listPrioridad', crudCommon(prioridad_item))
+
 app.use('/listFases', crudCommon(fase))
 
 module.exports = app
