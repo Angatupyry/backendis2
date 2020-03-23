@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         fecha_inicio: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             defaultValue: sequelize.fn('now')
         },
         fecha_fin: {
@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         estado_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'estado',
                 key: 'id'

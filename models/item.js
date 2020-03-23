@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         observacion: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         fase_id: {
             type: DataTypes.INTEGER,
