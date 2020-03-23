@@ -29,8 +29,8 @@ const produccion = {
 //     var sequelize = new Sequelize(process.env[config.use_env_variable]);
 // } else {
 
-const sequelize = new Sequelize(desarrollo.database, desarrollo.username, desarrollo.pass, {
-    host: desarrollo.host,
+const sequelize = new Sequelize(produccion.database, produccion.username, produccion.pass, {
+    host: produccion.host,
     dialect: 'postgres',
     pool: {
         max: 9,
