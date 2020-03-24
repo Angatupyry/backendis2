@@ -9,24 +9,8 @@ module.exports = {
 
     async login(req, res) {
         try {
-            //DATOS TEMPORALES DE PRUEBA
-            const userTemp = [{
-                    id: 1,
-                    username: 'crolon',
-                    password: '123',
-                    activo: true,
-                    rol: 'admin'
-                },
-                {
-                    id: 2,
-                    username: 'aestigarribia',
-                    password: '456',
-                    activo: true,
-                    rol: 'desarrollador'
-                }
-            ]
-            let noExiste = 0
-            let user = noExiste
+           
+            let user
             if (typeof req.body.username === 'undefined' || req.body.username === '') {
                 return response.error(req, res, 'Falta el parámetro usuario', 404, '')
             }
@@ -35,20 +19,13 @@ module.exports = {
                 return response.error(req, res, 'Falta el parámetro contraseña', 404, '')
             }
 
-            //Buscar usuario en la base de datos
-            //Por el momento solo usamos datos en duro para las pruebas
-            // user = await usuario.findOne({
-            //     where: {
-            //         username: req.body.username
-            //     }
-            // })
-            for (let i = 0; i < userTemp.length; i++) {
-                if (userTemp[i].username === req.body.username) {
-                    user = userTemp[i]
-                } 
-            }
+            user = await usuario.findOne({
+                where: {
+                    username: req.body.username
+                }
+            })
 
-            if (user === noExiste) {
+            if (!user) {
                 return response.error(req, res, 'No se encontró el usuario', 401, '')
             }
 
