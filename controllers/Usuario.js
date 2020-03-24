@@ -1,7 +1,29 @@
+const crypto = require('crypto')
 const {
     usuario
 } = require('../models')
 module.exports = {
+    async create(req, res, next) {
+        try {
+            const pass = req.body.password;
+            const passwordEncriptado = crypto.createHash('md5').update(pass).digest("hex");
+            const user = await usuario.create({
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                email: req.body.email,
+                rol_id: req.body.rol_id,
+                username: req.body.username,
+                password: passwordEncriptado
+            })
+            res.status(200).json({
+                user
+            })
+
+        } catch (error) {
+            return next(error)
+        }
+    },
+
     async list(req, res, next) {
 
         try {
