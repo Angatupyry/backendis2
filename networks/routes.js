@@ -21,7 +21,7 @@ const {
 
 app.post('/login', auth.login)
 //Comentar hasta que el front consuma el token
-//app.use(mwToken)
+app.use(mwToken)
 
 //#####################################################
 //################     USUARIO      ###################
