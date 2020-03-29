@@ -29,7 +29,7 @@ app.use(mwToken)
 
 app.use('/createUser', controlUsuario.create)
 app.get('/listUsers', controlUsuario.list)
-app.use('/deleteUser', crudCommon(usuario))
+app.use('/deleteUser/:id', controlUsuario.delete)
 app.put('/updateUser/:id', controlUsuario.update)
 
 //#####################################################

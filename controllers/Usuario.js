@@ -32,7 +32,8 @@ module.exports = {
                                         u.username, u.nombre, u.apellido,
                                         u.email, r.descripcion, u.activo 
                                 from usuario u
-                                join rol r on r.id = u.rol_id`, {
+                                join rol r on r.id = u.rol_id
+                                where u.activo`, {
                 type: usuario.sequelize.QueryTypes.SELECT
             })
             res.status(200).json(user)
@@ -70,7 +71,27 @@ module.exports = {
             })
 
             return res.status(204).end()
-            
+
+        } catch (error) {
+            return next(error)
+        }
+    },
+
+    async delete(req, res, next) {
+        try {
+
+            await usuario.update({
+                activo: false
+            }, {
+                where: {
+                    id: req.params.id
+                },
+                returning: true,
+                plain: true
+            })
+
+            return res.status(204).end()
+
         } catch (error) {
             return next(error)
         }
