@@ -30,7 +30,7 @@ app.post('/login', auth.login)
 app.use('/createUser', controlUsuario.create)
 app.get('/listUsers', controlUsuario.list)
 app.use('/deleteUser', crudCommon(usuario))
-app.use('/updateUser', crudCommon(usuario))
+app.put('/updateUser/:id', controlUsuario.update)
 
 //#####################################################
 //##################     ROL      #####################

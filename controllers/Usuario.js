@@ -50,5 +50,29 @@ module.exports = {
                 "message": "Lo sentimos, ha ocurrido un error"
             })
         }
+    },
+
+    async update(req, res, next) {
+        try {
+
+            let user = {
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                email: req.body.email,
+                rol_id: req.body.rol_id,
+                username: req.body.username
+            }
+
+            await usuario.update(user, {
+                where: {
+                    id: req.params.id
+                }
+            })
+
+            return res.status(204).end()
+            
+        } catch (error) {
+            return next(error)
+        }
     }
 }
