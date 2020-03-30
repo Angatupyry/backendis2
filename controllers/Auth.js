@@ -49,7 +49,7 @@ module.exports = {
                 res.status(201).json({
                     success: true,
                     token: token,
-                    user_rol: user.rol,
+                    user_rol: user.rol_id,
                     message: 'Login'
                 })
             }
