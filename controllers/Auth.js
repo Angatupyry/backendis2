@@ -9,7 +9,7 @@ module.exports = {
 
     async login(req, res) {
         try {
-           
+
             let user
             if (typeof req.body.username === 'undefined' || req.body.username === '') {
                 return response.error(req, res, 'Falta el parámetro usuario', 404, '')
@@ -45,12 +45,22 @@ module.exports = {
                 }
 
                 const token = jwt.encode(payload, config.api.secret, config.api.algoritm)
+                
+                let permisoJson = {
+                    puedeCrear: true,
+                    puedeEditar: false
+                }
+
+                let permiso = [{
+                    puedeCrear: permisoJson.puedeCrear, 
+                    puedeEditar: permisoJson.puedeEditar}]
 
                 res.status(201).json({
                     success: true,
                     token: token,
                     user_rol: user.rol_id,
-                    message: 'Login'
+                    message: 'Login',
+                    arrayPermiso : permiso
                 })
             }
 
