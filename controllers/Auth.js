@@ -3,7 +3,8 @@ const moment = require('moment')
 const response = require('../networks/response')
 const config = require('../config/config')
 const {
-    usuario
+    usuario,
+    rol
 } = require('../models')
 module.exports = {
 
@@ -19,11 +20,19 @@ module.exports = {
                 return response.error(req, res, 'Falta el parámetro contraseña', 404, '')
             }
 
+
             user = await usuario.findOne({
                 where: {
                     username: req.body.username
                 }
             })
+
+            const resultRol = await rol.findOne({
+                where: {
+                    id: user.rol_id
+                }
+            })
+
 
             if (!user) {
                 return response.error(req, res, 'No se encontró el usuario', 401, '')
@@ -45,22 +54,13 @@ module.exports = {
                 }
 
                 const token = jwt.encode(payload, config.api.secret, config.api.algoritm)
-                
-                let permisoJson = {
-                    puedeCrear: true,
-                    puedeEditar: false
-                }
-
-                let permiso = [{
-                    puedeCrear: permisoJson.puedeCrear, 
-                    puedeEditar: permisoJson.puedeEditar}]
 
                 res.status(201).json({
                     success: true,
                     token: token,
                     user_rol: user.rol_id,
-                    message: 'Login',
-                    arrayPermiso : permiso
+                    nombre_rol: resultRol.descripcion,
+                    message: 'Login'
                 })
             }
 
