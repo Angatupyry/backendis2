@@ -11,11 +11,11 @@ module.exports = {
                                     e.descripcion estado, 
                                     i.observacion, 
                                     i.descripcion,
-                                    f.nombre fase_nombre
+                                    pro.nombre proyecto_nombre
                             from item i
                             join prioridad_item p on p.id = i.prioridad_id
                             join estado e on e.id = i.estado_id
-                            join fase f on f.id = i.fase_id`, {
+                            join proyecto pro on pro.id = i.proyecto_id`, {
                 type: item.sequelize.QueryTypes.SELECT
             })
             res.status(200).json(i)

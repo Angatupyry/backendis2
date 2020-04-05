@@ -5,7 +5,7 @@ module.exports = {
     async list(req, res, next) {
 
         try {
-            const i = await proyecto.sequelize.query(`
+            const pro = await proyecto.sequelize.query(`
                     select p.id id, 
                     p.nombre nombre,
                     p.descripcion descripcion,
@@ -16,7 +16,7 @@ module.exports = {
                 join estado e on e.id = p.estado_id`, {
                 type: proyecto.sequelize.QueryTypes.SELECT
             })
-            res.status(200).json(i)
+            res.status(200).json(pro)
         } catch (error) {
             console.log("EndPoint: Error en Proyecto.list")
             console.log('Fecha del Error: ', new Date())

@@ -34,11 +34,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        fase_id: {
+        proyecto_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'fase',
+                model: 'proyecto',
                 key: 'id'
             }
         },
@@ -49,11 +49,6 @@ module.exports = function (sequelize, DataTypes) {
                 model: 'item',
                 key: 'id'
             }
-        },
-        es_padre: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-            defaultValue: true
         }
     }, {
         tableName: 'item',
