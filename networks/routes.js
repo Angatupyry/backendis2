@@ -47,6 +47,7 @@ app.get('/listItems', controlItem.list)
 app.post('/createItem/:proyecto_id', controlItem.create)
 app.use('/deleteItem', crudCommon(item))
 app.use('/updateItem', crudCommon(item))
+app.put('/updateItemState/:id', controlItem.updateState)
 
 //#####################################################
 //##################    PROYECTO      #################
