@@ -7,6 +7,7 @@
         {
             "type": "node",
             "request": "launch",
+            "runtimeExecutable": "/home/fierro/.nvm/versions/node/v12.16.1/bin/node",
             "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"

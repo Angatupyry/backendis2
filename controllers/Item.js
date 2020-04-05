@@ -1,7 +1,61 @@
 const {
-    item
+    item,
+    proyecto,
+    estado
 } = require('../models')
 module.exports = {
+    async create(req, res, next) {
+        try {
+            let newItem
+
+            const findItem = await item.findAll({
+                where: {
+                    proyecto_id: req.params.proyecto_id
+                }
+            })
+
+            if (!findItem.length) {
+                const estadaoIniciado = await estado.findAll({
+                    where: {
+                        nombre_tabla: 'Item',
+                        descripcion: 'Iniciado'
+                    }
+                })
+
+                newItem = await item.create({
+                    version: "1",
+                    prioridad_id: req.body.prioridad_id,
+                    estado_id: estadaoIniciado[0].id,
+                    descripcion: req.body.descripcion,
+                    observacion: req.body.observacion,
+                    proyecto_id: req.params.proyecto_id,
+                    id_tarea_padre: null
+                })
+            } else {
+                const estadaoPendiente = await estado.findAll({
+                    where: {
+                        nombre_tabla: 'Item',
+                        descripcion: 'Pendiente'
+                    }
+                })
+                newItem = await item.create({
+                    version: "1",
+                    prioridad_id: req.body.prioridad_id,
+                    estado_id: estadaoPendiente[0].id,
+                    descripcion: req.body.descripcion,
+                    observacion: req.body.observacion,
+                    proyecto_id: req.params.proyecto_id,
+                    id_tarea_padre: findItem[findItem.length - 1].id
+                })
+            }
+
+            res.status(201).json(newItem)
+
+        } catch (error) {
+            return next(error)
+        }
+    },
+
     async list(req, res, next) {
 
         try {
@@ -20,18 +74,14 @@ module.exports = {
             })
             res.status(200).json(i)
         } catch (error) {
-            console.log("EndPoint: Error en Usuario.list")
+            console.log("EndPoint: Error en Item.list")
             console.log('Fecha del Error: ', new Date())
             console.log('Host:', req.headers.host)
             console.log('Ip:', req.headers.ip)
             console.log('Body:', req.body)
-            console.log('Giro ID:', req.params.id)
             console.log('Error:', error)
 
-            return res.status(503).json({
-                "userMessage": true,
-                "message": "Lo sentimos, ha ocurrido un error"
-            })
+            return next(error)
         }
     }
 }

@@ -44,7 +44,7 @@ app.use('/updateRol', crudCommon(rol))
 //#####################################################
 
 app.get('/listItems', controlItem.list)
-app.use('/createItem', crudCommon(item))
+app.post('/createItem/:proyecto_id', controlItem.create)
 app.use('/deleteItem', crudCommon(item))
 app.use('/updateItem', crudCommon(item))
 

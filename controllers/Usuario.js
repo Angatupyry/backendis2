@@ -43,7 +43,6 @@ module.exports = {
             console.log('Host:', req.headers.host)
             console.log('Ip:', req.headers.ip)
             console.log('Body:', req.body)
-            console.log('Giro ID:', req.params.id)
             console.log('Error:', error)
 
             return res.status(503).json({
