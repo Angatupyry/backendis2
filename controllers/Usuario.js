@@ -13,7 +13,8 @@ module.exports = {
                 email: req.body.email,
                 rol_id: req.body.rol_id,
                 username: req.body.username,
-                password: passwordEncriptado
+                password: passwordEncriptado,
+                proyecto_id: req.body.proyecto_id
             })
             res.status(200).json({
                 user
@@ -62,7 +63,8 @@ module.exports = {
                 apellido: req.body.apellido,
                 email: req.body.email,
                 rol_id: req.body.rol_id,
-                username: req.body.username
+                username: req.body.username,
+                proyecto_id: req.body.proyecto_id
             }
 
             await usuario.update(user, {
