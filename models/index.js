@@ -39,7 +39,6 @@ const sequelize = new Sequelize(desarrollo.database, desarrollo.username, desarr
     }
 })
 //var sequelize = new Sequelize(config.database, config.username, config.password, config);
-console.log(sequelize)
 //}
 
 fs
