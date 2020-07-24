@@ -6,13 +6,13 @@ module.exports = {
 
         try {
             const pro = await proyecto.sequelize.query(`
-                    select p.id id, 
+                    select p.id id,
                     p.nombre nombre,
                     p.descripcion descripcion,
                     p.fecha_inicio fecha_inicio,
                     p.fecha_fin fecha_fin,
                     e.descripcion estado
-                from proyecto p 
+                from proyecto p
                 join estado e on e.id = p.estado_id`, {
                 type: proyecto.sequelize.QueryTypes.SELECT
             })
@@ -23,7 +23,6 @@ module.exports = {
             console.log('Host:', req.headers.host)
             console.log('Ip:', req.headers.ip)
             console.log('Body:', req.body)
-            console.log('Giro ID:', req.params.id)
             console.log('Error:', error)
 
             return res.status(503).json({

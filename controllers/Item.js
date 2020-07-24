@@ -59,10 +59,10 @@ module.exports = {
 
         try {
             const i = await item.sequelize.query(`
-                                    select i.id , 
+                                    select i.id ,
                                     p.descripcion nombre_prioridad,
-                                    e.descripcion estado, 
-                                    i.observacion, 
+                                    e.descripcion estado,
+                                    i.observacion,
                                     i.descripcion,
                                     pro.nombre proyecto_nombre
                             from item i

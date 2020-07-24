@@ -45,7 +45,7 @@ module.exports = {
             if (user.password !== req.body.password) {
                 return response.error(req, res, 'Password incorrecto', 401, '')
             } else {
-                //Tiempo de expiración del token. 
+                //Tiempo de expiración del token.
                 const expires = moment().add(1, 'd').valueOf()
                 const payload = {
                     id: user.id,

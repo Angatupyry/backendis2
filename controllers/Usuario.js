@@ -29,7 +29,7 @@ module.exports = {
 
         try {
             const user = await usuario.sequelize.query(`
-                                select u.id, 
+                                select u.id,
                                         u.username, u.nombre, u.apellido,
                                         u.email, r.descripcion, u.activo,
                                         p.nombre proyecto_nombre
