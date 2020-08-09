@@ -25,12 +25,9 @@ const produccion = {
     host: 'ec2-23-23-245-89.compute-1.amazonaws.com'
 }
 
-// if (config.use_env_variable) {
-//     var sequelize = new Sequelize(process.env[config.use_env_variable]);
-// } else {
 
-const sequelize = new Sequelize(produccion.database, produccion.username, produccion.pass, {
-    host: produccion.host,
+const sequelize = new Sequelize(desarrollo.database, desarrollo.username, desarrollo.pass, {
+    host: desarrollo.host,
     dialect: 'postgres',
     pool: {
         max: 9,
@@ -38,8 +35,6 @@ const sequelize = new Sequelize(produccion.database, produccion.username, produc
         idle: 10000
     }
 })
-//var sequelize = new Sequelize(config.database, config.username, config.password, config);
-//}
 
 fs
     .readdirSync(__dirname)
