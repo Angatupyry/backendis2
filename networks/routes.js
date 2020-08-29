@@ -4,6 +4,7 @@ const crudCommon = require('../networks/crud_common')
 const controlUsuario = require('../controllers/Usuario')
 const controlItem = require('../controllers/Item')
 const controlProject = require('../controllers/Project')
+const controlBaseline = require('../controllers/LineaBase')
 const controlGeneric = require('../controllers/GenericList')
 const {
     rol,
@@ -57,6 +58,12 @@ app.get('/listProjects', controlProject.list)
 app.use('/createProject', crudCommon(proyecto))
 app.use('/deleteProject', crudCommon(proyecto))
 app.use('/updateProject', crudCommon(proyecto))
+
+//#####################################################
+//##################    LÍNEAS BASE      #################
+//#####################################################
+
+app.get('/listBaselines', controlBaseline.list)
 
 //#####################################################
 //##################    Genéricos      ################

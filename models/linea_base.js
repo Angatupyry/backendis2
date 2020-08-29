@@ -21,6 +21,10 @@ module.exports = function (sequelize, DataTypes) {
                 model: 'estado',
                 key: 'id'
             }
+        },
+        nombre: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         tableName: 'linea_base',
