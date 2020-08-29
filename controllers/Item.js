@@ -58,7 +58,7 @@ module.exports = {
     async list(req, res, next) {
 
         try {
-            const i = await item.sequelize.query(`
+            const tareas = await item.sequelize.query(`
                                     select i.id ,
                                     p.descripcion nombre_prioridad,
                                     e.descripcion estado,
@@ -72,7 +72,7 @@ module.exports = {
                             order by pro.id, e.id`, {
                 type: item.sequelize.QueryTypes.SELECT
             })
-            res.status(200).json(i)
+            res.status(200).json(tareas)
         } catch (error) {
             console.log("EndPoint: Error en Item.list")
             console.log('Fecha del Error: ', new Date())
