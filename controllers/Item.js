@@ -64,11 +64,13 @@ module.exports = {
                                     e.descripcion estado,
                                     i.observacion,
                                     i.descripcion,
-                                    pro.nombre proyecto_nombre
+                                    pro.nombre proyecto_nombre,
+                                    lbd.id pertenece_a_lb
                             from item i
                             join prioridad_item p on p.id = i.prioridad_id
                             join estado e on e.id = i.estado_id
                             join proyecto pro on pro.id = i.proyecto_id
+                            left join linea_base_detalle lbd on lbd.item_id = i.id
                             order by pro.id, e.id`, {
                 type: item.sequelize.QueryTypes.SELECT
             })
