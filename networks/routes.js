@@ -19,7 +19,6 @@ const {
 } = require('../middelwares')
 
 app.post('/login', auth.login)
-//Comentar hasta que el front consuma el token
 app.use(mwToken)
 
 //#####################################################
@@ -60,10 +59,11 @@ app.use('/deleteProject', crudCommon(proyecto))
 app.use('/updateProject', crudCommon(proyecto))
 
 //#####################################################
-//##################    LÍNEAS BASE      #################
+//##################    LÍNEAS BASE      ##############
 //#####################################################
 
 app.get('/listBaselines', controlBaseline.list)
+app.post('/createBaselines/:proyecto_id', controlBaseline.create)
 
 //#####################################################
 //##################    Genéricos      ################

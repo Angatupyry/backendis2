@@ -1,33 +1,29 @@
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('linea_base', {
+    return sequelize.define('linea_base_detalle', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        proyecto_id: {
+        item_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'proyecto',
+                model: 'item',
                 key: 'id'
             }
         },
-        estado_id: {
+        linea_base_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
-                model: 'estado',
+                model: 'linea_base',
                 key: 'id'
             }
-        },
-        nombre: {
-            type: DataTypes.STRING,
-            allowNull: false
         }
     }, {
-        tableName: 'linea_base',
+        tableName: 'linea_base_detalle',
         timestamps: false,
         schema: 'public'
     });
