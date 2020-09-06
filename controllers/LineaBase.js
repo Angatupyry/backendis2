@@ -63,11 +63,7 @@ module.exports = {
             })
 
             const lbOrderByName = lodash.groupBy(lb, 'nombre_lb')
-<<<<<<< HEAD
             res.status(200).json(lbOrderByName)
-=======
-            res.status(200).json({lbOrderByName})
->>>>>>> 35713c501535332dadce96009f75f4ad0527a2c3
         } catch (error) {
             console.log("EndPoint: Error en LineaBase.list")
             console.log('Fecha del Error: ', new Date())
