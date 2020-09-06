@@ -48,10 +48,17 @@ module.exports = {
                 })
             }
 
-            res.status(201).json(newItem)
+            res.status(201).json({
+                newItem, 
+                "userMessage": true,
+                "message": "Éxito"
+            })
 
         } catch (error) {
-            return next(error)
+            return res.status(503).json({
+                "userMessage": true,
+                "message": "Lo sentimos, ha ocurrido un error"
+            })
         }
     },
 
