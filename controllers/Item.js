@@ -48,11 +48,7 @@ module.exports = {
                 })
             }
 
-            res.status(201).json({
-                newItem, 
-                "userMessage": true,
-                "message": "Éxito"
-            })
+            res.status(201).json(newItem)
 
         } catch (error) {
             return res.status(503).json({
