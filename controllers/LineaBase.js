@@ -68,7 +68,6 @@ module.exports = {
             console.log('Ip:', req.headers.ip)
             console.log('Body:', req.body)
             console.log('Error:', error)
-            next(error)
             return res.status(503).json({
                 "userMessage": true,
                 "message": "Lo sentimos, ha ocurrido un error"

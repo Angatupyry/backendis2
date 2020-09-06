@@ -83,7 +83,10 @@ module.exports = {
             console.log('Body:', req.body)
             console.log('Error:', error)
 
-            return next(error)
+            return res.status(503).json({
+                "userMessage": true,
+                "message": "Lo sentimos, ha ocurrido un error"
+            })
         }
     },
 
