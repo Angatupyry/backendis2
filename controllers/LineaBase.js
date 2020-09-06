@@ -1,7 +1,8 @@
 const {
     linea_base,
     linea_base_detalle
-} = require('../models')
+} = require('../models');
+const lodash = require('lodash')
 module.exports = {
 
     async create(req, res, next) {
@@ -60,7 +61,9 @@ module.exports = {
                 order by i.proyecto_id`, {
                 type: linea_base.sequelize.QueryTypes.SELECT
             })
-            res.status(200).json(lb)
+
+            const lbOrderByName = lodash.groupBy(lb, 'nombre_lb')
+            res.status(200).json(lbOrderByName)
         } catch (error) {
             console.log("EndPoint: Error en LineaBase.list")
             console.log('Fecha del Error: ', new Date())
