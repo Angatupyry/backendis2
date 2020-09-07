@@ -26,7 +26,7 @@ const produccion = {
 }
 
 
-const sequelize = new Sequelize(desarrollo.database, desarrollo.username, desarrollo.pass, {
+const sequelize = new Sequelize(produccion.database, produccion.username, produccion.pass, {
     host: desarrollo.host,
     dialect: 'postgres',
     pool: {
