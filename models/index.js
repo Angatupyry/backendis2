@@ -27,7 +27,7 @@ const produccion = {
 
 
 const sequelize = new Sequelize(produccion.database, produccion.username, produccion.pass, {
-    host: desarrollo.host,
+    host: produccion.host,
     dialect: 'postgres',
     pool: {
         max: 9,
