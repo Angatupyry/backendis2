@@ -4,49 +4,40 @@ const {
     estado,
     item
 } = require('../models');
-const {
-    Op
-} = require("sequelize");
 const lodash = require('lodash');
-const { parse } = require('path');
 module.exports = {
 
     async create(req, res, next) {
         try {
-            let newBaseLineDetails;
-            const id_items = req.body.items.reduce((acu, id) => {
-                return acu + id + ', ';
-            }, '(').slice(0, -2) + ')';
+            let newBaseLineDetails
 
-            const estadaoIniciado = await estado.findOne({
+            //Busca si alguna tarea tiene un proyecto distinto.
+            let itemFlag = req.body.items[0].proyecto_id
+            for (let i = 0; i < req.body.items.length; i++) {
+                if (itemFlag !== req.body.items[i].proyecto_id) {
+                    return res.status(503).json({
+                        "userMessage": true,
+                        "message": "Algún ítem no pertenecen al proyecto seleccionado"
+                    })
+                }
+            }
+
+            const estadoIniciado = await estado.findOne({
                 where: {
                     nombre_tabla: 'Linea Base',
                     descripcion: 'Iniciado'
                 }
             })
 
-            const items = await item.sequelize.query(` select proyecto_id from item where id in ${id_items}`, {
-                type: item.sequelize.QueryTypes.SELECT
-            })
-
-            const found = items.find(element => element.proyecto_id !== parseInt(req.params.proyecto_id));
-
-            if (found) {
-                return res.status(503).json({
-                    "userMessage": true,
-                    "message": "Algún ítem no pertenecen al proyecto seleccionado"
-                })
-            }
-
             const newBaseLine = await linea_base.create({
                 nombre: req.body.nombre,
-                proyecto_id: req.params.proyecto_id,
-                estado_id: estadaoIniciado.id
+                proyecto_id: req.body.items[0].proyecto_id,
+                estado_id: estadoIniciado.id
             })
 
             for (let i = 0; i < req.body.items.length; i++) {
                 newBaseLineDetails = await linea_base_detalle.create({
-                    item_id: req.body.items[i],
+                    item_id: req.body.items[i].id,
                     linea_base_id: newBaseLine.id
                 })
             }

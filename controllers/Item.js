@@ -14,7 +14,7 @@ module.exports = {
             })
 
             if (!findItem.length) {
-                const estadaoIniciado = await estado.findOne({
+                const estadoIniciado = await estado.findOne({
                     where: {
                         nombre_tabla: 'Item',
                         descripcion: 'Iniciado'
@@ -24,14 +24,14 @@ module.exports = {
                 newItem = await item.create({
                     version: req.body.version,
                     prioridad_id: req.body.prioridad_id,
-                    estado_id: estadaoIniciado.id,
+                    estado_id: estadoIniciado.id,
                     descripcion: req.body.descripcion,
                     observacion: req.body.observacion,
                     proyecto_id: req.params.proyecto_id,
                     id_tarea_padre: null
                 })
             } else {
-                const estadaoPendiente = await estado.findOne({
+                const estadoPendiente = await estado.findOne({
                     where: {
                         nombre_tabla: 'Item',
                         descripcion: 'Pendiente'
@@ -40,7 +40,7 @@ module.exports = {
                 newItem = await item.create({
                     version: req.body.version,
                     prioridad_id: req.body.prioridad_id,
-                    estado_id: estadaoPendiente.id,
+                    estado_id: estadoPendiente.id,
                     descripcion: req.body.descripcion,
                     observacion: req.body.observacion,
                     proyecto_id: req.params.proyecto_id,
@@ -63,6 +63,7 @@ module.exports = {
         try {
             const tareas = await item.sequelize.query(`
                                     select i.id ,
+                                    pro.id proyecto_id,
                                     p.descripcion nombre_prioridad,
                                     e.descripcion estado,
                                     i.observacion,
