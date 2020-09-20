@@ -22,7 +22,7 @@ module.exports = {
                 })
 
                 newItem = await item.create({
-                    version: "1",
+                    version: req.body.version,
                     prioridad_id: req.body.prioridad_id,
                     estado_id: estadaoIniciado.id,
                     descripcion: req.body.descripcion,
@@ -38,7 +38,7 @@ module.exports = {
                     }
                 })
                 newItem = await item.create({
-                    version: "1",
+                    version: req.body.version,
                     prioridad_id: req.body.prioridad_id,
                     estado_id: estadaoPendiente.id,
                     descripcion: req.body.descripcion,
