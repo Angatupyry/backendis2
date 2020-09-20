@@ -81,7 +81,8 @@ module.exports = {
                        e.descripcion estado,
                        pi.descripcion prioridad,
                        p.nombre nombre_proyecto,
-                       i.descripcion
+                       i.descripcion,
+                       i.version
                 from  linea_base l
                 join linea_base_detalle lbd on lbd.linea_base_id = l.id
                 join item i on i.id = lbd.item_id
