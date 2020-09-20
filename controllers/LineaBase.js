@@ -32,9 +32,9 @@ module.exports = {
             const found = items.find(element => element.proyecto_id !== parseInt(req.params.proyecto_id));
 
             if (found) {
-                return res.status(200).json({
-                    codigo_retorno: "1",
-                    mensaje: "Algún ítem no pertenecen al proyecto seleccionado"
+                return res.status(503).json({
+                    "userMessage": true,
+                    "message": "Algún ítem no pertenecen al proyecto seleccionado"
                 })
             }
 
