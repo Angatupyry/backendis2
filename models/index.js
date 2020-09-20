@@ -14,7 +14,7 @@ var db = {};
 const desarrollo = {
     database: 'gestion_proyecto',
     username: 'postgres',
-    pass: 'postgress',
+    pass: 'postgres',
     host: 'localhost'
 }
 

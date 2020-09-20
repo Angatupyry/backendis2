@@ -63,7 +63,7 @@ app.use('/updateProject', crudCommon(proyecto))
 //#####################################################
 
 app.get('/listBaselines', controlBaseline.list)
-app.post('/createBaselines/:proyecto_id', controlBaseline.create)
+app.post('/createBaselines', controlBaseline.create)
 
 //#####################################################
 //##################    Genéricos      ################
