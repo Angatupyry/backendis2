@@ -1,17 +1,47 @@
 const {
     linea_base,
-    linea_base_detalle
+    linea_base_detalle,
+    estado,
+    item
 } = require('../models');
-const lodash = require('lodash')
+const {
+    Op
+} = require("sequelize");
+const lodash = require('lodash');
+const { parse } = require('path');
 module.exports = {
 
     async create(req, res, next) {
         try {
             let newBaseLineDetails;
+            const id_items = req.body.items.reduce((acu, id) => {
+                return acu + id + ', ';
+            }, '(').slice(0, -2) + ')';
+
+            const estadaoIniciado = await estado.findOne({
+                where: {
+                    nombre_tabla: 'Linea Base',
+                    descripcion: 'Iniciado'
+                }
+            })
+
+            const items = await item.sequelize.query(` select proyecto_id from item where id in ${id_items}`, {
+                type: item.sequelize.QueryTypes.SELECT
+            })
+
+            const found = items.find(element => element.proyecto_id !== parseInt(req.params.proyecto_id));
+
+            if (found) {
+                return res.status(200).json({
+                    codigo_retorno: "1",
+                    mensaje: "Algún ítem no pertenecen al proyecto seleccionado"
+                })
+            }
+
             const newBaseLine = await linea_base.create({
                 nombre: req.body.nombre,
                 proyecto_id: req.params.proyecto_id,
-                estado_id: req.body.estado_id
+                estado_id: estadaoIniciado.id
             })
 
             for (let i = 0; i < req.body.items.length; i++) {
