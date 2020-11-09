@@ -53,7 +53,7 @@ app.put('/updateItemState/:id', controlItem.updateState)
 //##################    PROYECTO      #################
 //#####################################################
 
-app.get('/listProjects', controlProject.list)
+app.get('/listProjects/:showProjectFinalized', controlProject.list)
 app.use('/createProject', crudCommon(proyecto))
 app.use('/deleteProject', crudCommon(proyecto))
 app.use('/updateProject', crudCommon(proyecto))

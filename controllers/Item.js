@@ -1,3 +1,4 @@
+const { restart } = require('nodemon')
 const {
     item,
     estado
@@ -7,20 +8,27 @@ module.exports = {
         try {
             let newItem
 
+            const estadoIniciado = await estado.findOne({
+                where: {
+                    nombre_tabla: 'Item',
+                    descripcion: 'Iniciado'
+                }
+            })
+
             const findItem = await item.findAll({
                 where: {
                     proyecto_id: req.params.proyecto_id
                 }
             })
 
-            if (!findItem.length) {
-                const estadoIniciado = await estado.findOne({
-                    where: {
-                        nombre_tabla: 'Item',
-                        descripcion: 'Iniciado'
-                    }
-                })
+            const findStartedStatus = await item.findAll({
+                where: {
+                    proyecto_id: req.params.proyecto_id,
+                    estado_id: estadoIniciado.id
+                }
+            })
 
+            if (!findItem.length) {
                 newItem = await item.create({
                     version: req.body.version,
                     prioridad_id: req.body.prioridad_id,
@@ -40,7 +48,7 @@ module.exports = {
                 newItem = await item.create({
                     version: req.body.version,
                     prioridad_id: req.body.prioridad_id,
-                    estado_id: estadoPendiente.id,
+                    estado_id: !findStartedStatus.length ? estadoIniciado.id : estadoPendiente.id,
                     descripcion: req.body.descripcion,
                     observacion: req.body.observacion,
                     proyecto_id: req.params.proyecto_id,
