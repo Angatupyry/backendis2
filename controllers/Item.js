@@ -8,25 +8,6 @@ module.exports = {
         try {
             let newItem
 
-            // const estadoFinalizado = await estado.findOne({
-            //     where: {
-            //         nombre_tabla: 'Proyecto',
-            //         descripcion: 'Finalizado'
-            //     }
-            // })
-
-            // const proyecto = await proyecto.findOne({
-            //     where: {
-            //         id: req.params.proyecto_id,
-            //         estado_id: !estadoFinalizado.id
-            //     }
-            // })
-
-
-            // if (!proyecto.length) {
-            //     return res.status(200).json({})
-            // }
-
             const estadoIniciado = await estado.findOne({
                 where: {
                     nombre_tabla: 'Item',
