@@ -23,7 +23,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jwt-simple": "^0.5.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "path": "^0.12.7",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
